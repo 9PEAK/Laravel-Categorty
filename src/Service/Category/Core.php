@@ -4,7 +4,7 @@ namespace Peak\Service\Category;
 
 use Illuminate\Database\Eloquent\Builder;
 
-abstract class Core extends \Illuminate\Database\Eloquent\Model
+class Core extends \Illuminate\Database\Eloquent\Model
 {
 
 	protected $table = 'category';
@@ -28,16 +28,29 @@ abstract class Core extends \Illuminate\Database\Eloquent\Model
 	];
 
 
+
+
+	/**
+	 * 初始化
+	 * */
+	static function init ($type)
+	{
+		self::$CATEGORY_TYPE = $type;
+		return self::class;
+	}
+
+	protected static $CATEGORY_TYPE = null;
+
 	protected static function boot()
 	{
 		parent::boot();
 
 		static::addGlobalScope('type', function (Builder $builder) {
-			$builder->where('type', static::TYPE);
+			$builder->where('type', self::$CATEGORY_TYPE);
 		});
 
 		static::saving(function ($model) {
-			$model->type = static::TYPE;
+			$model->type = self::$CATEGORY_TYPE;
 		});
 
 		static::saved(function ($model){
