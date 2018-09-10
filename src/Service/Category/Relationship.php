@@ -4,7 +4,7 @@ namespace App\Service\Model\Category;
 
 trait Relationship {
 
-	private function Sub ($model, $key)
+	private function Category ($model, $key)
 	{
 		return $this->hasMany('\\'.$model, $key, 'id');
 	}

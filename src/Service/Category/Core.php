@@ -28,29 +28,16 @@ class Core extends \Illuminate\Database\Eloquent\Model
 	];
 
 
-
-
-	/**
-	 * 初始化
-	 * */
-	static function init ($type)
-	{
-		self::$CATEGORY_TYPE = $type;
-		return self::class;
-	}
-
-	protected static $CATEGORY_TYPE = null;
-
 	protected static function boot()
 	{
 		parent::boot();
 
 		static::addGlobalScope('type', function (Builder $builder) {
-			$builder->where('type', self::$CATEGORY_TYPE);
+			$builder->where('type', self::TYPE);
 		});
 
 		static::saving(function ($model) {
-			$model->type = self::$CATEGORY_TYPE;
+			$model->type = self::TYPE;
 		});
 
 		static::saved(function ($model){
