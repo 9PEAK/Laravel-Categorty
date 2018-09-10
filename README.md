@@ -6,3 +6,4 @@ Laravel 分类Model
 待开发共功能：
 Model 关联Tag
 Category 自身初始化
+这种方式的缺点在于，自身难以扩展。
