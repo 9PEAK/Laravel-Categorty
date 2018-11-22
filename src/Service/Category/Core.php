@@ -73,6 +73,7 @@ class Core extends \Illuminate\Database\Eloquent\Model
 		return $query->whereRaw( (boolean)$top ? 'pid=id' : 'pid!=id');
 	}
 
+
 	/**
 	 * 检索状态
 	 * */
