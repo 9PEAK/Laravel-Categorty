@@ -64,6 +64,15 @@ class Core extends \Illuminate\Database\Eloquent\Model
 
 	### 作用域查询
 
+
+	/**
+	 * 搜索顶级栏目
+	 * */
+	public function scopeWhereTopest ($query, $top=true)
+	{
+		return $query->whereRaw( (boolean)$top ? 'pid=id' : 'pid!=id');
+	}
+
 	/**
 	 * 检索状态
 	 * */
