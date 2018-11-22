@@ -93,7 +93,7 @@ class Core extends \Illuminate\Database\Eloquent\Model
 	 * */
 	public function sub ()
 	{
-		return $this->hasMany(static::class, 'pid', 'id');
+		return $this->hasMany(static::class, 'pid', 'id')->whereRaw('pid!=id');
 	}
 
 
