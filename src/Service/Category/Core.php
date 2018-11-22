@@ -33,11 +33,11 @@ class Core extends \Illuminate\Database\Eloquent\Model
 		parent::boot();
 
 		static::addGlobalScope('type', function (Builder $builder) {
-			$builder->where('type', self::TYPE);
+			$builder->where('type', static::TYPE);
 		});
 
 		static::saving(function ($model) {
-			$model->type = self::TYPE;
+			$model->type = static::TYPE;
 		});
 
 		static::saved(function ($model){
