@@ -50,6 +50,18 @@ class Core extends \Illuminate\Database\Eloquent\Model
 	}
 
 
+
+
+	/**
+	 * 是否是顶级分类
+	 * */
+	public function isTopest ()
+	{
+		return $this->id==$this->pid;
+	}
+
+
+
 	### 作用域查询
 
 	/**
