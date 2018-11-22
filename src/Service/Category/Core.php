@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Core extends \Illuminate\Database\Eloquent\Model
 {
 
-	protected $table = 'category';
+	protected $table = '9peak_category';
 	public $timestamps = false;
 
 	protected $fillable = [
@@ -57,7 +57,7 @@ class Core extends \Illuminate\Database\Eloquent\Model
 	 * */
 	public function scopeWhereStatus ($query, $status)
 	{
-		return $query->where('status', $status);
+		return is_array($status) ? $query->whereIn('status', $status) : $query->where('status', $status);
 	}
 
 

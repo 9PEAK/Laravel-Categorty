@@ -14,7 +14,7 @@ class PeakCategory extends Migration
      */
     public function up()
     {
-    	DB::statement('CREATE TABLE IF NOT EXISTS `category` (
+    	DB::statement('CREATE TABLE IF NOT EXISTS `9peak_category` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT \'名称\',
   `intro` text COMMENT \'说明\',
@@ -40,6 +40,6 @@ class PeakCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('9peak_category');
     }
 }
