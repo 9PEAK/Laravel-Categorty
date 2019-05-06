@@ -33,11 +33,11 @@ class Core extends \Illuminate\Database\Eloquent\Model
 		parent::boot();
 
 		static::addGlobalScope('type', function (Builder $builder) {
-			$builder->where('type', static::TYPE);
+			defined('static::TYPE') && $builder->where('type', static::TYPE);
 		});
 
 		static::saving(function ($model) {
-			$model->type = static::TYPE;
+			defined('static::TYPE') && $model->type = static::TYPE;
 		});
 
 		static::saved(function ($model){
@@ -62,11 +62,33 @@ class Core extends \Illuminate\Database\Eloquent\Model
 
 
 
+	### type 设置
+
+//	static function type ()
+//	{
+//
+//	}
+
+
 	### 作用域查询
 
 
 	/**
 	 * 搜索顶级栏目
+	 * @param $query
+	 * @param $type float 类型编号
+	 * */
+	public function scopeWhereType ($query, $type)
+	{
+		return $query->where('type', $type);
+	}
+
+
+
+	/**
+	 * 搜索顶级栏目
+	 * @param $query
+	 * @param $top boolean true检索顶级栏目，false检索非顶级栏目
 	 * */
 	public function scopeWhereTopest ($query, $top=true)
 	{
@@ -76,6 +98,8 @@ class Core extends \Illuminate\Database\Eloquent\Model
 
 	/**
 	 * 检索状态
+	 * @param $query
+	 * @param $status int|array 状态值
 	 * */
 	public function scopeWhereStatus ($query, $status)
 	{
