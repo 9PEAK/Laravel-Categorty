@@ -12,7 +12,7 @@ class Provider extends ServiceProvider
 		// 创建迁移
 		$this->publishes(
 			[
-				__DIR__.'/publish/migration.php' => database_path('migrations/2018_09_09_170327_peak_category.php'),
+				__DIR__.'/publish/migration.php' => database_path('migrations/'.date('Y_m_d').'_170327_peak_category.php'),
 			],
 			'migration'
 		);
@@ -23,9 +23,6 @@ class Provider extends ServiceProvider
 	{
 
 	}
-
-
-
 
 
 }

@@ -23,7 +23,7 @@ class PeakCategory extends Migration
   `top` tinyint(2) NOT NULL DEFAULT \'1\' COMMENT \'排序 状态\',
   `status` tinyint(1) DEFAULT NULL COMMENT \'状态\',
   `total` mediumint(8) UNSIGNED NOT NULL DEFAULT \'0\' COMMENT \'子分类总数\',
-  `type` float(3.1) NOT NULL COMMENT \'模块类型\',
+  `type` double(3.1) NOT NULL COMMENT \'模块类型\',
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `pid` (`pid`),
