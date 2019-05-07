@@ -7,11 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class PeakCategory extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
+
     public function up()
     {
     	DB::statement('CREATE TABLE IF NOT EXISTS `9peak_category` (
@@ -23,7 +20,7 @@ class PeakCategory extends Migration
   `top` tinyint(2) NOT NULL DEFAULT \'1\' COMMENT \'排序 状态\',
   `status` tinyint(1) DEFAULT NULL COMMENT \'状态\',
   `total` mediumint(8) UNSIGNED NOT NULL DEFAULT \'0\' COMMENT \'子分类总数\',
-  `type` double(3.1) NOT NULL COMMENT \'模块类型\',
+  `type` double(3,1) NOT NULL COMMENT \'模块类型\',
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `pid` (`pid`),
@@ -33,11 +30,7 @@ class PeakCategory extends Migration
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('9peak_category');
